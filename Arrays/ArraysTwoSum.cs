@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace FAANGInterviewQuestions
+﻿namespace FAANGInterviewQuestions.Arrays
 {
     /// <summary>
     /// https://leetcode.com/problems/two-sum/description/
