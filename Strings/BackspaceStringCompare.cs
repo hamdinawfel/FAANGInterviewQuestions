@@ -38,16 +38,22 @@ namespace FAANGInterviewQuestions.Strings
         }
 
         //After hint
+        //TIME : O(a+b) 
+        // SPACE : O(a+b)
         public static bool BackspaceCompare1(string s, string t)
         {
-            var cleanedS = CleanUpString1(s);
-            var cleanedT = CleanUpString1(t);
+            var cleanedS = CleanUpString1(s); //T: O(a)
+            var cleanedT = CleanUpString1(t);//T: O(b)
 
-            if (cleanedS.Count != cleanedT.Count) return false;
+            if (cleanedS.Count != cleanedT.Count) return false; // O(1)
 
-            return cleanedS.SequenceEqual(cleanedT);
-        }
+            return cleanedS.SequenceEqual(cleanedT); //T: O(a) or O(b) 
 
+        }                                           // => O(2a +b) OR O(a + 2b)
+                                                    // O(a+b)
+
+        //TIME : O(N)
+        //SAPCE : O(N)
         private static Stack<char> CleanUpString1(string input)
         {
             var output = new Stack<char>();
