@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FAANGInterviewQuestions.Arrays
 {
+    /// <summary>
+    /// https://leetcode.com/problems/trapping-rain-water/
+    /// </summary>
     public static class TrappingRainWater
     {
         public static void Execute()
@@ -90,7 +93,7 @@ namespace FAANGInterviewQuestions.Arrays
 
         }
 
-        public static int Trap(int[] height)
+        public static int Trap000(int[] height)
         {
             var maxWater = 0;
             var containers = new List<List<int>>();
@@ -155,6 +158,21 @@ namespace FAANGInterviewQuestions.Arrays
                 }
               
                 maxWater += maxArea - container.Skip(1).Take(container.Count - 2).Sum(x => x);
+            }
+
+            return maxWater;
+        }
+
+        public static int Trap(int[] height)
+        {
+            var maxWater = 0;
+            for(var i = 1; i < height.Length - 1; i++)
+            {
+                var leftMax = height.Take(i).Max() > height[i] ?height.Take(i).Max() : height[i];
+                var rightMax = height.Skip(i).Max();
+                var h = Math.Min(leftMax, rightMax) - height[i];
+
+                maxWater += h;
             }
 
             return maxWater;
