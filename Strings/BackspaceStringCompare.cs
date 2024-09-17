@@ -11,39 +11,65 @@ namespace FAANGInterviewQuestions.Strings
         {
             //var s = "ad#c"; var t = "ab#c";
             //var s = "ab##"; var t = "c#d#";
-            var s = "#a#c"; var t = "a##c";
+            var s = "a#c"; var t = "b";
             var result = BackspaceCompare(s, t);
             Console.WriteLine(result);
         }
 
         public static bool BackspaceCompare(string s, string t)
         {
-            var ssb = new StringBuilder(s);
-            var tsb = new StringBuilder(t);
-           
-            while (ssb.ToString().Any(c => c == '#'))
-            {
-                if (ssb[0] == '#')
-                {
-                    ssb.Remove(ssb.ToString().IndexOf('#'), 1);
-                    continue;
-                }
-                
-                ssb.Remove(ssb.ToString().IndexOf('#') - 1, 2);
-            }
-
-            while (tsb.ToString().Any(c => c == '#'))
-            {
-                if (tsb[0] == '#')
-                {
-                    tsb.Remove(tsb.ToString().IndexOf('#'), 1);
-                    continue;
-                }
-
-                tsb.Remove(tsb.ToString().IndexOf('#') - 1, 2);
-            }
-
-            return ssb.ToString() == tsb.ToString();
+            return CleanUpString(s) == CleanUpString(t);
         }
+
+        private static string CleanUpString(string input)
+        {
+            var sb = new StringBuilder(input);
+            while (sb.ToString().Any(c => c == '#'))
+            {
+                if (sb[0] == '#')
+                {
+                    sb.Remove(sb.ToString().IndexOf('#'), 1);
+                    continue;
+                }
+
+                sb.Remove(sb.ToString().IndexOf('#') - 1, 2);
+            }
+            return sb.ToString();
+        }
+
+        //After hint
+        public static bool BackspaceCompare1(string s, string t)
+        {
+            var cleanedS = CleanUpString1(s);
+            var cleanedT = CleanUpString1(t);
+
+            if (cleanedS.Count != cleanedT.Count) return false;
+
+            return cleanedS.SequenceEqual(cleanedT);
+        }
+
+        private static Stack<char> CleanUpString1(string input)
+        {
+            var output = new Stack<char>();
+
+            for(int i = 0; i < input.Length; i++)
+            {
+                if (input[i] != '#')
+                {
+                    output.Push(input[i]);
+                }
+                else
+                {
+                    if(output.Count > 0)
+                    {
+                        output.Pop();
+                    }
+                }
+            }
+
+            return output;
+        }
+
+        
     }
 }
