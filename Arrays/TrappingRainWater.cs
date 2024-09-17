@@ -13,8 +13,8 @@ namespace FAANGInterviewQuestions.Arrays
     {
         public static void Execute()
         {
-            var height = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
-            //var height = new int[] { 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+            //var height = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+            var height = new int[] { 4, 2, 0, 3, 2, 5 };
             //var height = new int[] { 4, 2, 0, 3, 2, 5 };
             //var height = new int[] { 2, 0, 2 };
             //var height = new int[] { 4, 2, 3 };
@@ -163,7 +163,7 @@ namespace FAANGInterviewQuestions.Arrays
             return maxWater;
         }
 
-        public static int Trap(int[] height)
+        public static int Trap1(int[] height)
         {
             var maxWater = 0;
             for(var i = 1; i < height.Length - 1; i++)
@@ -176,6 +176,84 @@ namespace FAANGInterviewQuestions.Arrays
             }
 
             return maxWater;
+        }
+
+        /// <summary>
+        /// MY OPTIMOSATION : 4,2,0,3,2,5
+        /// water = min(maxLeft , maxRight) - currentHeight
+        /// </summary>
+        public static int Trap11(int[] height)
+        {
+            var water = 0; var pl = 0; var pr = height.Length - 1; var maxLeft = 0; var maxRight = 0;
+            while (pl <=pr) 
+            {
+                if(maxLeft <= maxRight)
+                {
+                    if (height[pl] >= maxLeft)
+                    {
+                        maxLeft = height[pl];
+                    }
+                    else
+                    {
+                        water += Math.Min(maxLeft, maxRight) - height[pl];
+                    }
+                    pl++;
+                }
+                else
+                {
+                    if (height[pr] >= maxRight)
+                    {
+                        maxRight = height[pr];
+                    }
+                    else
+                    {
+                        water += Math.Min(maxLeft, maxRight) - height[pr];
+                    }
+                    pr--;
+                } 
+            }
+
+            return water;
+        }
+
+        /// <summary>
+        /// CORRECTION : https://replit.com/@ZhangMYihua/trapping-rainwater-optimal-solution#index.js
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static int Trap(int[] height)
+        {
+            var water = 0; var pl = 0; var pr = height.Length - 1; var maxLeft = 0; var maxRight = 0;
+            while (pl < pr)
+            {
+                if (height[pl] <= height[pr])
+                {
+                    if (height[pl] >= maxLeft)
+                    {
+                        maxLeft = height[pl];
+                    }
+                    else
+                    {
+                        water += maxLeft - height[pl];
+                    }
+                    pl++;
+                }
+                else
+                {
+                    if (height[pr] >= maxRight)
+                    {
+                        maxRight = height[pr];
+                    }
+                    else
+                    {
+                        water += maxRight - height[pr];
+
+                    }
+                    pr--;
+                }
+            }
+
+            return water;
         }
     }
 }
