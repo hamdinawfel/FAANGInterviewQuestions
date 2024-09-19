@@ -10,7 +10,6 @@ namespace FAANGInterviewQuestions.Arrays
 {
     /// <summary>
     /// https://leetcode.com/problems/container-with-most-water/description/
-    /// | | |
     /// </summary>
     public static class ContainerWithMostWater
     {
