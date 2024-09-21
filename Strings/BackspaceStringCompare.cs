@@ -11,10 +11,12 @@ namespace FAANGInterviewQuestions.Strings
         {
             //var s = "ad#c"; var t = "ab#c";
             //var s = "y#fo##f"; var t = "y#f#o##f";
-            var s = "ab##"; var t = "c#d#";
+            //var s = "ab##"; var t = "c#d#";
             //var s = "a#c"; var t = "b";
             //var s = "ab##"; var t = "c#d#";
-            var result = BackspaceCompare2(s, t);
+            var s = "bxj##tw"; var t = "bxj###tw";
+            
+            var result = BackspaceCompare3(s, t);
             Console.WriteLine(result);
         }
 
@@ -79,6 +81,7 @@ namespace FAANGInterviewQuestions.Strings
         }
 
         // MY Optimal Solution after hint
+        // NOT PASSED
         public static bool BackspaceCompare2(string s, string t)
         {
             var sbS = new StringBuilder(s); var sbT = new StringBuilder(t);
@@ -117,6 +120,65 @@ namespace FAANGInterviewQuestions.Strings
                 }
             }
             return sbS.ToString() == sbT.ToString();
+        }
+
+        // NOT PASSED
+        // https://replit.com/@ZhangMYihua/backspace-string-compare-optimal#index.js
+        // t : O(a+b)
+        // s : O(1)
+        public static bool BackspaceCompare3(string s, string t)
+        {
+            var p1 = s.Length - 1; var p2 = t.Length - 1;
+            while (p1 >= 0 || p2 >= 0)
+            {
+                if (p1 >= 0 && s[p1] == '#' || p2 >= 0 && t[p2] == '#')
+                {
+                    if (p1 >= 0 && s[p1] == '#')
+                    {
+                        int backCount = 2;
+                        while (backCount > 0)
+                        {
+                            p1--;
+                            backCount--;
+
+                            if (p1 >= 0 && s[p1] == '#')
+                            {
+                                backCount += 2;
+                            }
+                        }
+                    }
+
+                    if (p2 >= 0 && t[p2] == '#')
+                    {
+                        int backCount = 2;
+                        while (backCount > 0)
+                        {
+                            p2--;
+                            backCount--;
+
+                            if (p2 >= 0 && t[p2] == '#')
+                            {
+                                backCount += 2;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (p1 >= 0 && p2 >= 0 && s[p1] != t[p2])
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        p1--;
+                        p2--;
+                    }
+
+                }
+            }
+
+            return true;
         }
 
     }
