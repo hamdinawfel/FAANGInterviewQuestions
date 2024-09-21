@@ -10,9 +10,11 @@ namespace FAANGInterviewQuestions.Strings
         public static void Execute()
         {
             //var s = "ad#c"; var t = "ab#c";
+            //var s = "y#fo##f"; var t = "y#f#o##f";
+            var s = "ab##"; var t = "c#d#";
+            //var s = "a#c"; var t = "b";
             //var s = "ab##"; var t = "c#d#";
-            var s = "a#c"; var t = "b";
-            var result = BackspaceCompare(s, t);
+            var result = BackspaceCompare2(s, t);
             Console.WriteLine(result);
         }
 
@@ -76,6 +78,46 @@ namespace FAANGInterviewQuestions.Strings
             return output;
         }
 
-        
+        // MY Optimal Solution after hint
+        public static bool BackspaceCompare2(string s, string t)
+        {
+            var sbS = new StringBuilder(s); var sbT = new StringBuilder(t);
+            var p1 = sbS.Length - 1; var p2 = sbT.Length - 1;
+            while(p1 > 0 || p2 > 0)
+            {
+                if(!string.IsNullOrEmpty(sbS.ToString()) &&  sbS[0] == '#')
+                {
+                    sbS.Remove(0, 1);
+                    p1 = sbS.Length - 1;
+                    continue;
+                };
+                if (!string.IsNullOrEmpty(sbT.ToString()) && sbT[0] == '#')
+                {
+                    sbT.Remove(0, 1);
+                    p2 = sbT.Length - 1;
+                    continue;
+                };
+                if (p1 > 0 && sbS[p1] == '#' && sbS[p1 - 1] != '#')
+                {
+                    sbS.Remove(p1 - 1, 2);
+                    p1 = sbS.Length - 1;
+                }
+                else
+                {
+                    p1--;
+                }
+                if (p2 > 0 && sbT[p2] == '#' && sbT[p2 - 1] != '#')
+                {
+                    sbT.Remove(p2 - 1, 2);
+                    p2 = sbT.Length - 1;
+                }
+                else
+                {
+                    p2--;
+                }
+            }
+            return sbS.ToString() == sbT.ToString();
+        }
+
     }
 }

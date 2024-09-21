@@ -6,3 +6,4 @@ using FAANGInterviewQuestions.Strings;
 //ContainerWithMostWater.Execute();
 //TrappingRainWater.Execute();
 BackspaceStringCompare.Execute();
+//CalculateTotalPrice.Execute();
