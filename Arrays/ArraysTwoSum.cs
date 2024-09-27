@@ -7,15 +7,13 @@
     {
         public static void Execute()
         {
-            var numbers = new int[] { 1, 3, 7, 9, 2 }; 
-            var result1 = Calcualte(numbers, 11);
-            var result2 = Calcualte2(numbers, 11);
-            var result3 = Calcualte3(numbers, 11);
-            var result4 = Calcualte4(numbers, 11);
-            Console.WriteLine(string.Join(',', result1));
-            Console.WriteLine(string.Join(',', result3));
-            Console.WriteLine(string.Join(',', result4));
-            Console.WriteLine(result2);
+            var numbers = new int[] { 3, 2, 4 }; 
+            //var result1 = Calcualte(numbers, 11);
+            //var result2 = Calcualte2(numbers, 11);
+            var result = Calcualte3(numbers, 6);
+            //var result4 = Calcualte4(numbers, 11);
+            //Console.WriteLine(string.Join(',', result1));
+            Console.WriteLine(string.Join(',', result));
         }
         //MY SOLUTION
         public static int[] Calcualte(int[] nums, int target)
