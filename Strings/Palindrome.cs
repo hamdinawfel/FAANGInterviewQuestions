@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace FAANGInterviewQuestions.Strings
 {
@@ -9,14 +10,15 @@ namespace FAANGInterviewQuestions.Strings
     {
         public static void Execute()
         {
-            var s = "A man, a plan, a canal: Panama";
+            var s = "cbbcc";
             //var s1 = "0b";
             //var s1 = ",; W;:GlG:;l ;,";
             var s1 = "Suuv,5?tt?5,vYYS";
             var s2 = "race a car";
             //var s1 = "abb";
             //var s1 = ".,";
-            Console.WriteLine(IsPalindrome3(s));
+            //Console.WriteLine(IsPalindrome2(s));
+            Console.WriteLine(ValidPalindrome(s));
             //Output: true
             //Explanation: "amanaplanacanalpanama" is a palindrome.
 
@@ -25,25 +27,35 @@ namespace FAANGInterviewQuestions.Strings
         //MINE 
         public static bool IsPalindrome(string s)
         {
-            var sb = CleanUp(s);
+            var sb = CleanUp1(s);
 
-            if (sb.Length >= 2)
+            var p1 = sb.Length / 2 - 1;
+            var p2 = sb.Length % 2 == 0 ? sb.Length / 2 : sb.Length / 2 + 1;
+            if (sb.Length == 0 || sb.Length == 1)
             {
-                var left = sb.ToString().Substring(0, sb.Length / 2);
-                var right = sb.ToString().Substring((sb.Length / 2) + sb.Length % 2);
-                for (var i = 0; i < left.Length; i++)
-                {
-                    if (left[i] != right[left.Length - 1 - i])
-                    {
-                        return false;
-                    }
-                }
                 return true;
+            }
+            else if (sb.Length == 2)
+            {
+                return sb[0] == sb[1];
             }
             else
             {
-                return true;
+                while (p1 >= 0 && p2 < sb.Length)
+                {
+                    if (sb[p1] != sb[p2])
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        p1--;
+                        p2++;
+                    }
+                }
             }
+
+            return true;
         }
 
         //AFTER HINT: P1 = 0 ; P2 = s.Length -1 and GO to the middel
@@ -55,7 +67,24 @@ namespace FAANGInterviewQuestions.Strings
         //AFTER HINT: P1 = Middle ; P2 = Middle and GO to the extrimity
         public static bool IsPalindrome2(string s)
         {
-            return false;
+            var sb = new StringBuilder(Regex.Replace(s, @"[^A-Za-z0-9]", "").ToLower());
+
+            var isLenghtEven = sb.Length % 2 == 0;
+            var p1 = isLenghtEven? sb.Length / 2 : sb.Length / 2 -1; 
+            var p2 = isLenghtEven ? p1 +1 : p1 + 2;
+            while(p1>=0 && p2 < sb.Length)
+            {
+                if (sb[p1] != sb[p2])
+                {
+                    return false;
+                }
+                else
+                {
+                    p1--;
+                    p2++;
+                }
+            }
+            return true;
         }
 
         //AFTER HINT: clean up - reverse - and compare
@@ -78,6 +107,40 @@ namespace FAANGInterviewQuestions.Strings
                 }
             }
             return sb;
+        }
+
+        public static bool ValidPalindrome(string s)
+        {
+            var left = 0; var right = s.Length - 1;
+            while (left < right)
+            {
+                if (s[left] != s[right])
+                {
+                    return IsSubPalindrome(s, left + 1, right) || IsSubPalindrome(s, left, right - 1);
+                }
+                else
+                {
+                    left++;
+                    right--;
+                }
+            }
+            return true;
+        }
+        private static bool IsSubPalindrome(string s, int left, int right)
+        {
+            while (left < right)
+            {
+                if (s[left] != s[right])
+                {
+                    return false;
+                }
+                else
+                {
+                    left++;
+                    right--;
+                }
+            }
+            return true;
         }
     }
 }
