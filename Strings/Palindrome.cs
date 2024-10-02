@@ -27,7 +27,7 @@ namespace FAANGInterviewQuestions.Strings
         //MINE 
         public static bool IsPalindrome(string s)
         {
-            var sb = CleanUp1(s);
+            var sb = CleanUp(s);
 
             var p1 = sb.Length / 2 - 1;
             var p2 = sb.Length % 2 == 0 ? sb.Length / 2 : sb.Length / 2 + 1;
