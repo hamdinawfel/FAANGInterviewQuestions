@@ -17,7 +17,8 @@ using FAANGInterviewQuestions.Strings;
 
 //----------Linked List ----------//
 //ReverseBetweenSol.Execute();
-DoublyLinkedList.Execute();
+//DoublyLinkedList.Execute();
+LinkedListCycle.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();
