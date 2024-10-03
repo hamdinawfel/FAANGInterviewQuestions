@@ -16,7 +16,8 @@ using FAANGInterviewQuestions.Strings;
 //Palindrome.Execute();
 
 //----------Linked List ----------//
-ReverseBetweenSol.Execute();
+//ReverseBetweenSol.Execute();
+DoublyLinkedList.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();

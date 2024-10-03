@@ -54,10 +54,10 @@ namespace FAANGInterviewQuestions.LinkedList
         }
         public static void Execute1()
         {
-            var A = new Node('A');
-            var B = new Node('B');
-            var C = new Node('C');
-            var D = new Node('D');
+            var A = new NodeChar('A');
+            var B = new NodeChar('B');
+            var C = new NodeChar('C');
+            var D = new NodeChar('D');
 
             A.next = B;
             B.next = C;
@@ -71,9 +71,9 @@ namespace FAANGInterviewQuestions.LinkedList
             Console.WriteLine(string.Join(",", values ));
 
         }
-        public static void PrintList(Node head)
+        public static void PrintList(NodeChar head)
         {
-            Node current = head;
+            NodeChar current = head;
             while (current != null)
             {
                 Console.Write(current.val + " -> ");
@@ -82,7 +82,7 @@ namespace FAANGInterviewQuestions.LinkedList
             Console.WriteLine("null");
         }
 
-        public static void PrintListRecursive(Node head)
+        public static void PrintListRecursive(NodeChar head)
         {
             if(head == null)
             {
@@ -93,7 +93,7 @@ namespace FAANGInterviewQuestions.LinkedList
             PrintListRecursive(head.next);
         }
 
-        public static List<char> GetLinkedListValues(Node head)
+        public static List<char> GetLinkedListValues(NodeChar head)
         {
             var values = new List<char>();
             var current = head;
@@ -106,7 +106,7 @@ namespace FAANGInterviewQuestions.LinkedList
             return values;
         }
 
-        public static void GetLinkedListValuesRecursive(Node head, List<char> values)
+        public static void GetLinkedListValuesRecursive(NodeChar head, List<char> values)
         {
             if (head == null) return;
             values.Add(head.val);
@@ -173,11 +173,11 @@ namespace FAANGInterviewQuestions.LinkedList
         }
     }
 
-    public class Node
+    public class NodeChar
     {
         public char val;
-        public Node next;
-        public Node(char val = ' ', Node next = null)
+        public NodeChar next;
+        public NodeChar(char val = ' ', NodeChar next = null)
         {
             this.val = val;
             this.next = next;
