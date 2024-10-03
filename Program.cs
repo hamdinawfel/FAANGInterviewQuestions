@@ -2,6 +2,7 @@
 using FAANGInterviewQuestions.Arrays;
 using FAANGInterviewQuestions.CodingGame;
 using FAANGInterviewQuestions.LinkedList;
+using FAANGInterviewQuestions.StacksAndQueue;
 using FAANGInterviewQuestions.Strings;
 
 // ----Arrays ----//
@@ -18,7 +19,11 @@ using FAANGInterviewQuestions.Strings;
 //----------Linked List ----------//
 //ReverseBetweenSol.Execute();
 //DoublyLinkedList.Execute();
-LinkedListCycle.Execute();
+//LinkedListCycle.Execute();
+
+//----------Stacks & Queues ----------//
+
+ValidParentheses.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();
