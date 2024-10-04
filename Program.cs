@@ -23,7 +23,8 @@ using FAANGInterviewQuestions.Strings;
 
 //----------Stacks & Queues ----------//
 
-ValidParentheses.Execute();
+//ValidParentheses.Execute();
+MinimumBracketsToRemove.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();
