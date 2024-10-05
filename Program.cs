@@ -24,7 +24,8 @@ using FAANGInterviewQuestions.Strings;
 //----------Stacks & Queues ----------//
 
 //ValidParentheses.Execute();
-MinimumBracketsToRemove.Execute();
+//MinimumBracketsToRemove.Execute();
+QueueWithStacks.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();
