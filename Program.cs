@@ -1,11 +1,13 @@
 ﻿using FAANGInterviewQuestions;
 using FAANGInterviewQuestions.Arrays;
+using FAANGInterviewQuestions.Arrays2D;
 using FAANGInterviewQuestions.BinaryTree;
 using FAANGInterviewQuestions.CodingGame;
 using FAANGInterviewQuestions.LinkedList;
 using FAANGInterviewQuestions.Recursion;
 using FAANGInterviewQuestions.StacksAndQueue;
 using FAANGInterviewQuestions.Strings;
+using System.Text.Encodings.Web;
 
 // ----Arrays ----//
 //ArraysTwoSum.Execute();
@@ -35,9 +37,16 @@ using FAANGInterviewQuestions.Strings;
 //FirstAndLastPosition.Execute();
 //MaximumDepth.Execute();
 //LevelOrderTraversal.Execute();
-BTRightSideView.Execute();
+//BTRightSideView.Execute();
+
+//---------- 2D Array ----------//
+
+//MatrixTraversalDFS.Execute();
+//MatrixTraversalBFS.Execute();
+//NumberOfIslands.Execute();
+//RottingOrangesSol.Execute();
+WallsAndGates.Execute();
 
 //----Coding Game -----//
 //FindSumPairs.Execute();
 //CalcFactorial.Execute();
-
